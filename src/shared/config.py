@@ -6,7 +6,7 @@ using Pydantic Settings. Import 'settings' anywhere in the app.
 
 Usage:
     from src.shared.config import settings
-    print(settings.openai_api_key)
+    print(settings.gemini_api_key)
 """
 
 from functools import lru_cache
@@ -19,18 +19,20 @@ class Settings(BaseSettings):
     """Application settings loaded from environment variables."""
 
     # --- AI Configuration ---
-    openai_api_key: str = Field(
-        ...,
-        description="OpenAI API Key for the LLM agents."
-    )
     openai_model_name: str = Field(
-        "gpt-4o",
-        description="The OpenAI model to use for agents."
+        "gemini/gemini-2.0-flash",
+        description="The LLM model to use for agents."
+    )
+
+    # --- Gemini ---
+    gemini_api_key: Optional[str] = Field(
+        None,
+        description="Google Gemini API Key."
     )
 
     # --- Firecrawl ---
-    firecrawl_api_key: str = Field(
-        ...,
+    firecrawl_api_key: Optional[str] = Field(
+        None,
         description="API Key for Firecrawl scraping service."
     )
 
