@@ -6,10 +6,11 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "azure-storage-blob>=12.28.0",
-    "crewai>=1.14.4",
+    "crewai[google-genai]>=1.14.4",
     "crewai-tools>=1.14.4",
     "fastapi>=0.136.1",
     "firecrawl-py>=4.24.0",
+    "litellm>=1.83.0",
     "psycopg2-binary>=2.9.12",
     "pydantic-settings>=2.10.1",
     "python-dotenv>=1.2.2",
