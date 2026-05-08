@@ -3,6 +3,7 @@ Azure PostgreSQL Database Service Module.
 
 Handles saving analysis reports to Azure PostgreSQL using SQLAlchemy.
 The reports_log table is created automatically on first run.
+Gracefully skips DB operations if no connection string is provided.
 
 Usage:
     from src.shared.database import DatabaseService
@@ -37,7 +38,13 @@ class DatabaseService:
         """Initialize the database engine and create tables if needed."""
         db_url = settings.azure_postgres_connection_string
 
-        if db_url and db_url.startswith("postgres://"):
+        if not db_url:
+            print("Warning: No database connection string provided. Skipping DB setup.")
+            self.engine = None
+            self.session_local = None
+            return
+
+        if db_url.startswith("postgres://"):
             db_url = db_url.replace("postgres://", "postgresql://", 1)
 
         self.engine = create_engine(db_url)
@@ -52,6 +59,10 @@ class DatabaseService:
             ticker: The stock ticker symbol (e.g., 'NVDA').
             content: The full markdown report text.
         """
+        if not self.engine:
+            print("Warning: Database not configured. Skipping save.")
+            return
+
         session = self.session_local()
         try:
             new_report = FinancialReport(ticker=ticker, content=content)

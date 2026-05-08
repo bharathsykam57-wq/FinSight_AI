@@ -19,15 +19,13 @@ class Settings(BaseSettings):
     """Application settings loaded from environment variables."""
 
     # --- AI Configuration ---
-    openai_model_name: str = Field(
-        "gemini/gemini-2.0-flash",
-        description="The LLM model to use for agents."
+    openai_api_key: str = Field(
+        ...,
+        description="OpenAI API Key."
     )
-
-    # --- Gemini ---
-    gemini_api_key: Optional[str] = Field(
-        None,
-        description="Google Gemini API Key."
+    openai_model_name: str = Field(
+        "gpt-4o",
+        description="The LLM model to use for agents."
     )
 
     # --- Firecrawl ---
@@ -35,7 +33,6 @@ class Settings(BaseSettings):
         None,
         description="API Key for Firecrawl scraping service."
     )
-
     # --- LangSmith Observability (optional) ---
     langchain_tracing_v2: bool = Field(
         False,

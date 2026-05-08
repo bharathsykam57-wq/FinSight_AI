@@ -14,3 +14,7 @@ wheels/
 # Environment & OS
 .env
 .DS_Store
+
+# Logs and reports
+logs/
+investment_report_*.md

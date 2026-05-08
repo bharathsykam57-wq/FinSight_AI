@@ -22,9 +22,9 @@ class FinancialAgents:
     """Factory class for creating the FinSight AI agent workforce."""
 
     def __init__(self) -> None:
-        """Initialize all tools and set Gemini API key in environment."""
-        if settings.gemini_api_key:
-            os.environ["GEMINI_API_KEY"] = settings.gemini_api_key
+        """Initialize all tools and set OpenAI API key in environment."""
+        if settings.openai_api_key:
+            os.environ["OPENAI_API_KEY"] = settings.openai_api_key
 
         self.fundamental_tool = FundamentalAnalysisTool()
         self.compare_tool = CompareStocksTool()
