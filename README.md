@@ -18,7 +18,10 @@ Reports are automatically uploaded to **Azure Blob Storage** and logged to **Azu
 
 ## Architecture
 
+![FinSight AI Architecture](architecture.png)
+
 ```
+
 User Query (Natural Language)
         │
         ▼
@@ -172,6 +175,13 @@ Frontend will be available at `http://localhost:8501`
 uv run python main.py
 ```
 
+### 7. Or Run via Docker
+
+```bash
+docker build -t finsight-ai .
+docker run -p 8000:8000 --env-file .env finsight-ai
+```
+
 ---
 
 ## Sample Output
@@ -184,12 +194,12 @@ NVIDIA Corporation (NVDA) remains one of the most dominant players
 in the semiconductor space, driven by explosive AI infrastructure demand...
 
 ## Fundamental Analysis
-- Current Price: $875.40
-- Market Cap: $2.16T
-- P/E Ratio (Trailing): 68.4x
-- Beta: 1.66 (high volatility)
-- EPS: $12.96
-- 52-Week High: $974.00 | Low: $462.00
+- Current Price: $211.50
+- Market Cap: $5.14T
+- P/E Ratio (Trailing): 43.08x
+- Beta: 2.244 (high volatility)
+- EPS: $4.91
+- NVDA 1-year return: 80.24% vs SPY 30.95%
 
 ## Market Sentiment
 Recent analyst upgrades from Morgan Stanley and Goldman Sachs...
